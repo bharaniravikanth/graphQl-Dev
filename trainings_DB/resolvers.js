@@ -8,9 +8,12 @@ import Quote from "./models/quote.js";
 const resolvers = {
   Query: {
     users: async () => await User.find({}),
-    quotes: async () => await Quote.find({}),
-    user: async (_, { _id }) => await User.findById({ _id }),
-    quote: async (_, { by }) => await Quote.findOne({ by }).populate("by"),
+    quotes: async () =>
+      await Quote.find({})
+    ,
+    user: async (_, { _id }) => await User.findOne({ _id }),
+    quote: async (_, { by }) =>
+      await Quote.find({}).populate("by", "_id firstName"),
   },
   User: {
     quotes: async (ur) => Quote.find({ by: ur._id }),

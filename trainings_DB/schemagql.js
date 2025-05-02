@@ -4,8 +4,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(_id: ID): User
-    quotes: [Quote]
-    quote(by: ID): Quote
+    quotes: [QuoteWithName]
+    quote(by: ID): QuoteWithName
   }
   type User {
     _id: ID
@@ -13,6 +13,14 @@ const typeDefs = gql`
     lastName: String
     email: String
     quotes: [Quote]
+  }
+  type QuoteWithName {
+    name: String
+    by: idName
+  }
+  type idName {
+    _id: String
+    firstName: String
   }
   type Quote {
     name: String
