@@ -1,0 +1,7 @@
+query getUserByUserID{
+ user(id:101){
+ id
+  firstName
+  lastName
+}
+}
